@@ -1,9 +1,84 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <TargetFramework>net7.0</TargetFramework>
+	  <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+	  <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+	  <IsPackable>false</IsPackable>
+	  <BuildServerSideRenderer>false</BuildServerSideRenderer>
+	  <Version>2.0.0</Version>
+	  <Company>Pneuma Consulting S.A</Company>
+	  <Product>Escape Room Web</Product>
+	  <Authors>Pneuma Consulting S.A</Authors>
   </PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\Backend_Escaperoom_2.WebApi.xml</DocumentationFile>
+		<NoWarn>$(NoWarn);1701;1702;1591</NoWarn>
+		<OutputPath>bin\</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\Backend_Escaperoom_2.WebApi.xml</DocumentationFile>
+		<NoWarn>$(NoWarn);1701;1702;1591</NoWarn>
+		<OutputPath>bin\</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+		<PackageReference Include="Azure.Identity" Version="1.9.0-beta.1" />
+		<PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.5.0-beta.1" />
+		<PackageReference Include="FluentValidation" Version="11.4.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
+		<PackageReference Include="Microsoft.ApplicationInsights.SnapshotCollector" Version="1.4.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="7.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.2" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3-beta1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.1-dev-00295" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0-dev-00792" />
+		<PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.2.0-dev-00752" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="3.1.1-dev-10301" />
+		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.1-dev-00944" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="3.5.0-dev-00370" />
+		<PackageReference Include="Serilog.Sinks.AzureApp" Version="3.1.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.1-dev-00907" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
+		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0-dev-00049" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+		<PackageReference Include="Vereyon.Web.FlashMessage" Version="3.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Backend_Escaperoom_2.Application\Backend_Escaperoom_2.Application.csproj" />
+	  <ProjectReference Include="..\Backend_Escaperoom_2.Infrastructure.Persistence\Backend_Escaperoom_2.Infrastructure.Persistence.csproj" />
+	  <ProjectReference Include="..\Backend_Escaperoom_2.Infrastructure.Shared\Backend_Escaperoom_2.Infrastructure.Shared.csproj" />
+	</ItemGroup>
+	
+	
 
 </Project>

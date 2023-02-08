@@ -2,8 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
-
+	
+	<ItemGroup>
+		<PackageReference Include="MailKit" Version="3.4.1" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+		<PackageReference Include="MimeKit" Version="3.4.1" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\Backend_Escaperoom_2.Application\Backend_Escaperoom_2.Application.csproj" />
+	</ItemGroup>
+	
 </Project>
