@@ -21,6 +21,9 @@ namespace Backend_Escaperoom_2.Domain.Entities
         [Column("estado")]
         public int Estado { get; set; }
 
+        [Column("tipo_escape")]
+        public int TipoEscape { get; set; }
+
         [Column("fecha_inicio_juego")]
         public DateTime FechaInicioJuego { get; set; }
 

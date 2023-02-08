@@ -27,6 +27,49 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Logs\**" />
+	  <Content Remove="Logs\**" />
+	  <EmbeddedResource Remove="Logs\**" />
+	  <None Remove="Logs\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\js\deleteDialog.js" />
+	  <None Include="wwwroot\js\site.js" />
+	  <None Include="wwwroot\js\site.min.js" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+	  <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+	  <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+	  <None Include="wwwroot\lib\bootstrap\LICENSE" />
+	  <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+	  <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+	  <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+	  <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+	  <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+	  <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+	  <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+	  <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+	  <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+	  <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
 		<PackageReference Include="Azure.Identity" Version="1.9.0-beta.1" />
 		<PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.5.0-beta.1" />
@@ -42,7 +85,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

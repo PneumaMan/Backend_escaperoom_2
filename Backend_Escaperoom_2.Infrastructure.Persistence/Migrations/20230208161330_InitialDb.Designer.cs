@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendEscaperoom2.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230208143438_InitialDb")]
+    [Migration("20230208161330_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -193,6 +193,10 @@ namespace BackendEscaperoom2.Infrastructure.Persistence.Migrations
                         .HasColumnType("time")
                         .HasColumnName("tiempo_limite_participantes");
 
+                    b.Property<int>("TipoEscape")
+                        .HasColumnType("int")
+                        .HasColumnName("tipo_escape");
+
                     b.HasKey("Id");
 
                     b.ToTable("Escape_Room");
@@ -250,6 +254,16 @@ namespace BackendEscaperoom2.Infrastructure.Persistence.Migrations
                     b.Property<string>("PathMultimedia")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("path_multimedia");
+
+                    b.Property<string>("QRBgColor")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("qr_bg_color");
+
+                    b.Property<string>("QRColor")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("qr_color");
 
                     b.Property<int>("TipoMultimedia")
                         .HasColumnType("int")

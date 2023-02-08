@@ -33,6 +33,12 @@ namespace Backend_Escaperoom_2.Domain.Entities
         [Column("tipo_multimedia")]
         public int TipoMultimedia { get; set; }
 
+        [Column("qr_color"), MaxLength(10)]
+        public string QRColor { get; set; }
+
+        [Column("qr_bg_color"), MaxLength(10)]
+        public string QRBgColor { get; set; }
+
         [Column("id_escape_room"), ForeignKey("Escape_Room")]
         public int EscapeRoomId { get; set; }
         public EscapeRoom EscapeRoom { get; set; }

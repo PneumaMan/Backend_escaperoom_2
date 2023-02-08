@@ -33,7 +33,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.Usuarios.Commands
         public async Task<Response<string>> Handle(LogoutRequest request, CancellationToken cancellationToken)
         {
             //Usuario
-            var user = await _usuarioRepository.GetUserByIdFullAsync(request.Email.ToLower());
+            var user = await _usuarioRepository.GetUserByEmailFullAsync(request.Email);
             if (user == null)
             {
                 _errors.Add(new ValidationFailureResponse("Email", this._languagesHelper.LoginEmailNoExist));
@@ -42,7 +42,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.Usuarios.Commands
 
             await this._accountService.LogoutAsync();
 
-            return new Response<string>(user.Id, this._languagesHelper.Logout);
+            return new Response<string> { IsSuccess = true, Message = "Ha cerrado sesión correctamente." };
         }
     }
 }
