@@ -21,7 +21,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires
 
         public async Task<Response<IEnumerable<EnumResponse>>> Handle(GetAllTiposEscapesRequest request, CancellationToken cancellationToken)
         {
-            var estadosEscape = Enum.GetValues(typeof(EstadosEscapeRoom)).Cast<EstadosEscapeRoom>()
+            var tiposEscape = Enum.GetValues(typeof(TiposEscapes)).Cast<TiposEscapes>()
                 .Select(x => new EnumResponse
                 {
                     Id = (int)x,
@@ -29,7 +29,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires
                     Descripcion = x.GetEnumDescription()
                 }).ToList();
 
-            return new Response<IEnumerable<EnumResponse>>(estadosEscape);
+            return new Response<IEnumerable<EnumResponse>>(tiposEscape);
         }
     }
 }

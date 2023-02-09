@@ -58,7 +58,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Commands
             }
 
             escape.Estado = (int)EstadosEscapeRoom.Activo;
-            escape.TiempoLimite = tiempoEscape;
+            escape.TiempoLimiteGeneral = tiempoEscape;
             escape.TiempoLimiteParticipantes = tiempoParticipantes;
 
             var res = await _escapeRoomRepositoryAsync.AddAsync(escape);

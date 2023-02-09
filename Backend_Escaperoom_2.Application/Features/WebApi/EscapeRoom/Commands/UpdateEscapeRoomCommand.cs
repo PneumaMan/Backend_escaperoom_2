@@ -65,7 +65,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Commands
             //escape.Estado = request.Estado;
             escape.Organizador = request.Organizador;
             escape.CelularOrganizador = request.CelularOrganizador;
-            escape.TiempoLimite = tiempoEscape;
+            escape.TiempoLimiteGeneral = tiempoEscape;
             escape.TiempoLimiteParticipantes = tiempoParticipantes;
 
             await _escapeRoomRepositoryAsync.UpdateAsync(escape);

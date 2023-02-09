@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Participante;
-using Backend_Escaperoom_2.Application.DTOs.WebApi.Retos;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
 using Backend_Escaperoom_2.Application.Features.WebApi.Participantes.Queries;
