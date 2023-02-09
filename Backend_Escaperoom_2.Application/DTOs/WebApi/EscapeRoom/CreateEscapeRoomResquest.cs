@@ -11,6 +11,8 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom
     {
         public string NombreEscapeRoom { get; set; }
 
+        public int TipoEscape { get; set; }
+
         public DateTime FechaInicioJuego { get; set; }
 
         public DateTime FechaFinJuego { get; set; }
@@ -19,7 +21,7 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom
 
         public string CelularOrganizador { get; set; }
 
-        public string TiempoLimiteEscape { get; set; }
+        public string TiempoLimiteGeneral { get; set; }
 
         public string TiempoLimiteParticipantes { get; set; }
 

@@ -19,5 +19,9 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.Participante
 
         public int EscapeRoomId { get; set; }
 
+        public int TipoParticipanteId { get; set; }
+
+        public int? TeamId { get; set; }
+
     }
 }

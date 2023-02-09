@@ -52,6 +52,7 @@ namespace Backend_Escaperoom_2.Domain.Entities
         public Team MyTeam { get; set; }
 
 
+
         public ICollection<ParticipantesRespuestas> ParticipantesRespuestas { get; set; }
 
         public ICollection<EncuestasParticipantes> EncuestasParticipantes { get; set; }

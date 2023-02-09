@@ -38,22 +38,22 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Commands
             TimeSpan tiempoEscape;
             try
             {
-                tiempoEscape = TimeSpan.Parse(request.TiempoLimiteEscape);
+                tiempoEscape = TimeSpan.Parse(request.TiempoLimiteGeneral);
             }
             catch (Exception)
             {
-                _errors.Add(new ValidationFailureResponse("TiempoLimiteEscape", "El formato del 'Tiempo' del escape es incorrecto."));
+                _errors.Add(new ValidationFailureResponse("TiempoLimiteGeneral", "El formato del 'Tiempo' del escape es incorrecto."));
                 throw new ValidationException(_errors, this._languagesHelper.ErrorValidation);
             }
 
             TimeSpan tiempoParticipantes;
             try
             {
-                tiempoParticipantes = TimeSpan.Parse(request.TiempoLimiteEscape);
+                tiempoParticipantes = TimeSpan.Parse(request.TiempoLimiteParticipantes);
             }
             catch (Exception)
             {
-                _errors.Add(new ValidationFailureResponse("tiempoParticipantes", "El formato del 'Tiempo' de los participantes es incorrecto."));
+                _errors.Add(new ValidationFailureResponse("TiempoLimiteParticipantes", "El formato del 'Tiempo' de los participantes es incorrecto."));
                 throw new ValidationException(_errors, this._languagesHelper.ErrorValidation);
             }
 

@@ -1,6 +1,9 @@
 ﻿using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
+using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
+using Backend_Escaperoom_2.Application.Extensions;
+using Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Interfaces.Repositories;
 using Backend_Escaperoom_2.Application.Wrappers;
@@ -37,6 +40,12 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Commands
                 throw new ValidationException(_errors, this._languagesHelper.ErrorValidation);
             }
 
+            if (!((EstadosEscapeRoom)Enum.ToObject(typeof(EstadosEscapeRoom), escape.Estado) == EstadosEscapeRoom.Activo))
+            {
+                _errors.Add(new ValidationFailureResponse("Estado", $"El 'Estado' del escape room es diferente a {EstadosEscapeRoom.Activo.GetEnumDescription()}"));
+                throw new ValidationException(_errors, this._languagesHelper.ErrorValidation);
+            }
+
             TimeSpan tiempoEscape;
             try
             {
@@ -62,7 +71,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Commands
             escape.NombreEscapeRoom = request.NombreEscapeRoom;
             escape.FechaInicioJuego = request.FechaInicioJuego;
             escape.FechaFinJuego = request.FechaFinJuego;
-            //escape.Estado = request.Estado;
+            escape.TipoEscape = request.TipoEscape;
             escape.Organizador = request.Organizador;
             escape.CelularOrganizador = request.CelularOrganizador;
             escape.TiempoLimiteGeneral = tiempoEscape;

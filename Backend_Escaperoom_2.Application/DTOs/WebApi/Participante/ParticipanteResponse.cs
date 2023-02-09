@@ -1,4 +1,6 @@
 ﻿using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.Teams;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Extensions;
 using System;
@@ -32,6 +34,14 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.Participante
         public int EscapeRoomId { get; set; }
 
         public EscapeRoomResponse EscapeRoom { get; set; }
+
+        public int TipoParticipanteId { get; set; }
+
+        public TipoParticipanteResponse TipoParticipante { get; set; }
+
+        public int? TeamId { get; set; }
+
+        public TeamResponse MyTeam { get; set; }
 
         //public IEnumerable<RespuestaParticipanteResponse> RespuestasParticipantes { get; set; }
 

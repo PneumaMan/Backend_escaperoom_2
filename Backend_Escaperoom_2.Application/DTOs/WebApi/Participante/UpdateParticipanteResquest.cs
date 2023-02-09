@@ -7,6 +7,8 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.Participante
     {
         public int Id { get; set; }
 
+        public int TipoIdentificacion { get; set; }
+
         public string Identificacion { get; set; }
 
         public string Nombres { get; set; }
@@ -18,6 +20,10 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.Participante
         public int Estado { get; set; }
 
         public int EscapeRoomId { get; set; }
+
+        public int TipoParticipanteId { get; set; }
+
+        public int? TeamId { get; set; }
 
     }
 }

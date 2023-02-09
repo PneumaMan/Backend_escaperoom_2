@@ -39,9 +39,11 @@ namespace Backend_Escaperoom_2.Infrastructure.Persistence
             services.AddScoped(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddScoped<IUsuarioRepositoryAsync, UsuarioRepositoryAsync>();
             services.AddScoped<IRolesRepositoryAsync, RolesRepositoryAsync>();
-            //services.AddScoped<IEscapeRoomsRepositoryAsync, EscapeRoomsRepositoryAsync>();
+            services.AddScoped<IEscapeRoomsRepositoryAsync, EscapeRoomsRepositoryAsync>();
+            services.AddScoped<IParticipantesRepositoryAsync, ParticipantesRepositoryAsync>();
+            services.AddScoped<ITipoParticipantesRepositoryAsync, TipoParticipantesRepositoryAsync>();
+            services.AddScoped<ITeamsRepositoryAsync, TeamsRepositoryAsync>();
             //services.AddScoped<IRetosRepositoryAsync, RetosRepositoryAsync>();
-            //services.AddScoped<IParticipantesRepositoryAsync, ParticipantesRepositoryAsync>();
             //services.AddScoped<IRespuestasRepositoryAsync, RespuestasRepositoryAsync>();
             //services.AddScoped<IRespuestasParticipantesRepositoryAsync, RespuestasParticipantesRepositoryAsync>();
             //services.AddScoped<IEncuestasRepositoryAsync, EncuestasRepositoryAsync>();

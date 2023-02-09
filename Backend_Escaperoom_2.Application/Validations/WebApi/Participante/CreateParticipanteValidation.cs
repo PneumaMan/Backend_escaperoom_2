@@ -13,13 +13,18 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.Participante
     {
         private readonly IParticipantesRepositoryAsync _participantesRepositoryAsync;
         private readonly IEscapeRoomsRepositoryAsync _escapeRoomsRepositoryAsync;
+        private readonly ITipoParticipantesRepositoryAsync _tipoParticipantesRepositoryAsync;
+        private readonly ITeamsRepositoryAsync _teamsRepositoryAsync;
         private readonly LanguagesHelper _languagesHelper;
 
         public CreateParticipanteValidation(IParticipantesRepositoryAsync participantesRepositoryAsync, IEscapeRoomsRepositoryAsync escapeRoomsRepositoryAsync,
+            ITeamsRepositoryAsync teamsRepositoryAsync, ITipoParticipantesRepositoryAsync tipoParticipantesRepositoryAsync,
             LanguagesHelper languagesHelper)
         {
             _participantesRepositoryAsync = participantesRepositoryAsync;
             _escapeRoomsRepositoryAsync = escapeRoomsRepositoryAsync;
+            _tipoParticipantesRepositoryAsync = tipoParticipantesRepositoryAsync;
+            _teamsRepositoryAsync = teamsRepositoryAsync;
             _languagesHelper = languagesHelper;
 
             RuleFor(d => d.Identificacion)
@@ -31,6 +36,10 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.Participante
                 {
                     return await IsExistIdentParticipanteAsync(ident, model.EscapeRoomId, cancellation);
                 }).WithMessage(this._languagesHelper.ParticipanteExiste);
+
+            RuleFor(p => p.TipoIdentificacion).Cascade(CascadeMode.Stop)
+                .NotNull().WithMessage("Seleccione el 'Tipo' de identificación del participante.")
+                .Must(IsExistTipoIdentificacion).WithMessage("El 'Tipo' de identificación no existe.");
 
             RuleFor(d => d.Nombres)
                 .NotEmpty().WithMessage("Digite los 'Nombres' del participante.")
@@ -52,11 +61,21 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.Participante
 
             RuleFor(p => p.Estado).Cascade(CascadeMode.Stop)
                 .NotNull().WithMessage("Selecione el 'Estado' del participante.")
-                .MustAsync(IsExisteEstadoParticipante).WithMessage(this._languagesHelper.EstadoParticipanteNoExiste);
+                .Must(IsExistEstadoParticipante).WithMessage(this._languagesHelper.EstadoParticipanteNoExiste);
 
             RuleFor(p => p.EscapeRoomId).Cascade(CascadeMode.Stop)
-                .NotNull().WithMessage("Seleccione el 'Escape Room' para el reto.")
+                .NotNull().WithMessage("Seleccione el 'Escape Room' para registrar al participante.")
                 .MustAsync(IsExistEscapeRoomAsync).WithMessage(this._languagesHelper.EscapeRoomNoExiste);
+
+            RuleFor(p => p.TipoParticipanteId).Cascade(CascadeMode.Stop)
+                .NotNull().WithMessage("Seleccione el 'Escape Room' para registrar al participante.")
+                .MustAsync(IsExistTipoParticipanteAsync).WithMessage(this._languagesHelper.EscapeRoomNoExiste);
+
+            When(x => x.TeamId != null, () =>
+            {
+                RuleFor(p => p.TeamId).Cascade(CascadeMode.Stop)
+                    .MustAsync(IsExistTeamParticipanteAsync).WithMessage("El 'Team' al que tratas de unirte no existe.");
+            });
         }
 
         private async Task<bool> IsExistEscapeRoomAsync(int escapeRoomId, CancellationToken cancellationToken)
@@ -69,7 +88,22 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.Participante
             return await _participantesRepositoryAsync.IsExistAttributeAsync(e => !e.Identificacion.ToLower().Equals(identificacion.ToLower()), x => x.EscapeRoomId == idEscapeRoom);
         }
 
-        private async Task<bool> IsExisteEstadoParticipante(int estado, CancellationToken cancellationToken)
+        private async Task<bool> IsExistTipoParticipanteAsync(int idTipoParticipante, CancellationToken cancellationToken)
+        {
+            return await _tipoParticipantesRepositoryAsync.ExistElementAsync(x => x.Id.Equals(idTipoParticipante));
+        }
+
+        private async Task<bool> IsExistTeamParticipanteAsync(int? idTeam, CancellationToken cancellationToken)
+        {
+            return await _tipoParticipantesRepositoryAsync.ExistElementAsync(x => x.Id.Equals((int)idTeam));
+        }
+
+        private bool IsExistTipoIdentificacion(int tipoIdentificacion)
+        {
+            return Enum.IsDefined(typeof(TiposIdentificacion), tipoIdentificacion);
+        }
+
+        private bool IsExistEstadoParticipante(int estado)
         {
             return Enum.IsDefined(typeof(EstadosParticipantes), estado);
         }

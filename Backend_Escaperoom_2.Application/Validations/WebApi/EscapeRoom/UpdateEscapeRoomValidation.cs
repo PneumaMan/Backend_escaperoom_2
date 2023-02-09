@@ -1,4 +1,5 @@
 ﻿using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
+using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Interfaces.Repositories;
 using FluentValidation;
@@ -41,6 +42,9 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.EscapeRoom
                 //.LessThanOrEqualTo(x => new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59)).WithMessage("La 'Fecha final' del juego debe ser menor a la fecha actual")
                 .GreaterThan(x => x.FechaInicioJuego).WithMessage("La 'Fecha Final' del juego debe ser mayor a la fecha inicial.");
 
+            RuleFor(p => p.TipoEscape).Cascade(CascadeMode.Stop)
+                .NotNull().WithMessage("Seleccione el 'Tipo' de escape room.")
+                .Must(IsExistTipoEscape).WithMessage("El 'Tipo' de escape room no existe.");
 
             RuleFor(p => p.Organizador).Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Digite el 'Nombre' del organizador.")
@@ -56,7 +60,12 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.EscapeRoom
                 .Matches(@"^[ 0-9]+$").WithMessage($"{this._languagesHelper.CaracterInvalid} 0-9");
 
 
-            RuleFor(p => p.TiempoLimiteEscape).Cascade(CascadeMode.Stop)
+            RuleFor(p => p.TiempoLimiteParticipantes).Cascade(CascadeMode.Stop)
+                .NotEmpty().WithMessage("Digite el 'Tiempo' limite general para la duracion del escape en un dia.")
+                .NotNull().WithMessage("Digite el 'Tiempo' limite general para la duracion del escape en un dia.")
+                .Matches(@"^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$").WithMessage($"{this._languagesHelper.CaracterInvalid} 0-9, :");
+
+            RuleFor(p => p.TiempoLimiteParticipantes).Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Digite el 'Tiempo' limite para los participantes del escape room.")
                 .NotNull().WithMessage("Digite el 'Tiempo' limite para los participantes del escape room.")
                 .Matches(@"^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$").WithMessage($"{this._languagesHelper.CaracterInvalid} 0-9, :");
@@ -66,6 +75,11 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.EscapeRoom
         private async Task<bool> IsExistNombreEscapeAsync(string NombreEscape, int id, CancellationToken cancellationToken)
         {
             return await _escapeRoomsRepositoryAsync.IsExistAttributeAsync(e => !e.NombreEscapeRoom.ToLower().Equals(NombreEscape.ToLower()), x => x.Id != id);
+        }
+
+        private bool IsExistTipoEscape(int tipoEscape)
+        {
+            return Enum.IsDefined(typeof(TiposEscapes), tipoEscape);
         }
     }
 }
