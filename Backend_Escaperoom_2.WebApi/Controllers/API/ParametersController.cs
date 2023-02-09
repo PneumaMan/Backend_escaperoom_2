@@ -40,7 +40,7 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         [Produces("application/json", "text/html")]
         [ProducesResponseType(typeof(Response<IEnumerable<EnumResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetTiposMenus()
+        public async Task<IActionResult> GetTiposRetos()
         {
             this._logger.LogInformation("GET ALL TiposRetos");
             return Ok(await Mediator.Send(new GetAllTiposRetosRequest()));
@@ -55,7 +55,7 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         [Produces("application/json", "text/html")]
         [ProducesResponseType(typeof(Response<IEnumerable<EnumResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetTiposIdentificacion()
+        public async Task<IActionResult> GetTiposPreguntas()
         {
             this._logger.LogInformation("GET ALL TiposPreguntas");
             return Ok(await Mediator.Send(new GetAllTiposPreguntasRequest()));
@@ -89,6 +89,36 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         {
             this._logger.LogInformation("GET ALL EstadosEscapes");
             return Ok(await Mediator.Send(new GetAllEstadosEscapesRequest()));
+        }
+
+        /// <summary>
+        /// Se obtiene un listado de los tipos de escapes rooms
+        /// </summary>            
+        /// <response code="200">OK. Tipos de los escape rooms devueltos.</response>        
+        /// <response code="404">NotFound. No se ha encontrado el objeto solicitado.</response>    
+        [HttpGet("tipos-escapes")]
+        [Produces("application/json", "text/html")]
+        [ProducesResponseType(typeof(Response<IEnumerable<EnumResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetTiposEscapes()
+        {
+            this._logger.LogInformation("GET ALL TiposEscapes");
+            return Ok(await Mediator.Send(new GetAllTiposEscapesRequest()));
+        }
+
+        /// <summary>
+        /// Se obtiene un listado de los tipos de identificacion para los participantes
+        /// </summary>            
+        /// <response code="200">OK. Tipos de identificaion devueltos.</response>        
+        /// <response code="404">NotFound. No se ha encontrado el objeto solicitado.</response>    
+        [HttpGet("tipos-identificacion")]
+        [Produces("application/json", "text/html")]
+        [ProducesResponseType(typeof(Response<IEnumerable<EnumResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetTiposIdentificacion()
+        {
+            this._logger.LogInformation("GET ALL TiposIdentificacion");
+            return Ok(await Mediator.Send(new GetAllTiposIdentificacionRequest()));
         }
     }
 }

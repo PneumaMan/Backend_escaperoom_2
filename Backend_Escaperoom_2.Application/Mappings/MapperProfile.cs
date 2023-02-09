@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
 using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.Usuarios.CRUD;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.GameControl.AuthenticationParticipante;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.GameControl.Participante;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.Participante;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Roles;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Usuarios;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Usuarios.CRUD;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Extensions;
 using Backend_Escaperoom_2.Application.Features.Usuarios.Queries;
+using Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Models;
 using Backend_Escaperoom_2.Domain.Entities;
@@ -51,14 +56,26 @@ namespace Backend_Escaperoom_2.Application.Mappings
                 .ReverseMap();
 
             //ESCAPE ROOM
-            /*CreateMap<EscapeRoom, EscapeRoomResponse>()
+            CreateMap<EscapeRoom, EscapeRoomResponse>()
                 .ForMember(x => x.UrlQREscapeId, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
                 .ReverseMap();
             CreateMap<GetAllEscapeRoomsPaginationRequest, GetAllEscapeRoomParameter>().ReverseMap();
             CreateMap<CreateEscapeRoomResquest, EscapeRoom>();
             CreateMap<UpdateEscapeRoomResquest, EscapeRoom>();
 
-            //RETOS
+            //PARTICIPANTES
+            CreateMap<Participante, ParticipanteResponse>().ReverseMap();
+            CreateMap<Participante, EscapeParticipanteResponse>()
+                .ForMember(x => x.Id, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
+                .ReverseMap();
+            CreateMap<Participante, AuthenticationParticipanteResponse>()
+                .ForMember(x => x.Id, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
+                .ForMember(x => x.EscapeRoomId, o => o.MapFrom(x => HashHelper.Encrypt(x.EscapeRoomId.ToString())))
+                .ReverseMap();
+            CreateMap<CreateParticipanteResquest, Participante>();
+            CreateMap<UpdateParticipanteResquest, Participante>();
+
+            /*//RETOS
             CreateMap<Reto, RetoResponse>()
                 .ForMember(x => x.UrlQRRetoId, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
                 .ForMember(x => x.UrlQREscapeId, o => o.MapFrom(x => HashHelper.Encrypt(x.EscapeRoomId.ToString())))
@@ -74,19 +91,6 @@ namespace Backend_Escaperoom_2.Application.Mappings
             CreateMap<GetAllRetosPaginationRequest, GetAllRetosParameter>().ReverseMap();
             CreateMap<CreateRetosResquest, Reto>();
             CreateMap<UpdateRetosResquest, Reto>();
-
-            //PARTICIPANTES
-            CreateMap<Participante, ParticipanteResponse>().ReverseMap();
-            CreateMap<Participante, EscapeParticipanteResponse>()
-                .ForMember(x => x.Id, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
-                .ReverseMap();
-            CreateMap<Participante, AuthenticationParticipanteResponse>()
-                .ForMember(x => x.Id, o => o.MapFrom(x => HashHelper.Encrypt(x.Id.ToString())))
-                .ForMember(x => x.EscapeRoomId, o => o.MapFrom(x => HashHelper.Encrypt(x.EscapeRoomId.ToString())))
-                .ReverseMap();
-            CreateMap<GetAllRetosPaginationRequest, GetAllRetosParameter>().ReverseMap();
-            CreateMap<CreateParticipanteResquest, Participante>();
-            CreateMap<UpdateParticipanteResquest, Participante>();
 
             //RESPUESTAS
             CreateMap<Respuesta, RespuestaResponse>().ReverseMap();
