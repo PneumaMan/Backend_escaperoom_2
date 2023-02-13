@@ -10,18 +10,18 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires
+namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Queries
 {
-    public class GetAllTiposRetosQuery : IRequestHandler<GetAllTiposRetosRequest, Response<IEnumerable<EnumResponse>>>
+    public class GetAllTiposRespuestasQuery : IRequestHandler<GetAllTiposPreguntasRequest, Response<IEnumerable<EnumResponse>>>
     {
-        public GetAllTiposRetosQuery()
+        public GetAllTiposRespuestasQuery()
         {
 
         }
 
-        public async Task<Response<IEnumerable<EnumResponse>>> Handle(GetAllTiposRetosRequest request, CancellationToken cancellationToken)
+        public async Task<Response<IEnumerable<EnumResponse>>> Handle(GetAllTiposPreguntasRequest request, CancellationToken cancellationToken)
         {
-            var tiposIdent = Enum.GetValues(typeof(TiposRetos)).Cast<TiposRetos>()
+            var tiposIdent = Enum.GetValues(typeof(TiposPreguntas)).Cast<TiposPreguntas>()
                 .Select(x => new EnumResponse
                 {
                     Id = (int)x,

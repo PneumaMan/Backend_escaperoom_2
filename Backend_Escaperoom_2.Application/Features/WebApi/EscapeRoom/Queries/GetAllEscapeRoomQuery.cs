@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries
 {
-    public class GetAllEscapeRoomQuery : IRequestHandler<GetAllEscapeRoomsRequest, Response<IEnumerable<EscapeRoomResponse>>>
+    public class GetAllEscapeRoomQuery : IRequestHandler<GetAllTiposParticipantesRequest, Response<IEnumerable<EscapeRoomResponse>>>
     {
         private readonly IEscapeRoomsRepositoryAsync _escapeRoomsRepositoryAsync;
         private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries
             _errors = new List<ValidationFailureResponse>();
         }
 
-        public async Task<Response<IEnumerable<EscapeRoomResponse>>> Handle(GetAllEscapeRoomsRequest request, CancellationToken cancellationToken)
+        public async Task<Response<IEnumerable<EscapeRoomResponse>>> Handle(GetAllTiposParticipantesRequest request, CancellationToken cancellationToken)
         {
             var res = await _escapeRoomsRepositoryAsync.GetAllFullEscapeRooms();
             return new Response<IEnumerable<EscapeRoomResponse>>(this._mapper.Map<IEnumerable<EscapeRoomResponse>>(res));

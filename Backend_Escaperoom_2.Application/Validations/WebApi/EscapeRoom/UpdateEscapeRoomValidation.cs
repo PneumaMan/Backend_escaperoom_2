@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Backend_Escaperoom_2.Application.Validations.WebApi.EscapeRoom
 {
-    public class UpdateEscapeRoomValidation : AbstractValidator<UpdateEscapeRoomResquest>
+    public class UpdateEscapeRoomValidation : AbstractValidator<UpdateTipoParticipanteResquest>
     {
         private readonly IEscapeRoomsRepositoryAsync _escapeRoomsRepositoryAsync;
         private readonly LanguagesHelper _languagesHelper;

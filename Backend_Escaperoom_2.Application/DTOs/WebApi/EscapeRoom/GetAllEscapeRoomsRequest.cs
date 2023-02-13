@@ -7,6 +7,5 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom
 {
     public class GetAllEscapeRoomsRequest : IRequest<Response<IEnumerable<EscapeRoomResponse>>>
     {
-
     }
 }

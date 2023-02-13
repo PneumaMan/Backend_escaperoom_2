@@ -63,10 +63,6 @@ namespace Backend_Escaperoom_2.Application.Validations.WebApi.Participante
                 .NotNull().WithMessage("Selecione el 'Estado' del participante.")
                 .Must(IsExistEstadoParticipante).WithMessage(this._languagesHelper.EstadoParticipanteNoExiste);
 
-            RuleFor(p => p.EscapeRoomId).Cascade(CascadeMode.Stop)
-                .NotNull().WithMessage("Seleccione el 'Escape Room' para el reto.")
-                .MustAsync(IsExistEscapeRoomAsync).WithMessage(this._languagesHelper.EscapeRoomNoExiste);
-
 
             RuleFor(p => p.TipoParticipanteId).Cascade(CascadeMode.Stop)
                 .NotNull().WithMessage("Seleccione el 'Escape Room' para registrar al participante.")

@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Backend_Escaperoom_2.Domain.Entities
 {
@@ -19,7 +16,7 @@ namespace Backend_Escaperoom_2.Domain.Entities
         public string NombreTeam { get; set; }
 
         [Column("capacidad")]
-        public int Estado { get; set; }
+        public int Capacidad { get; set; }
 
         [Column("time_score_grupal")]
         public TimeSpan? TimeScoreTeam { get; set; }

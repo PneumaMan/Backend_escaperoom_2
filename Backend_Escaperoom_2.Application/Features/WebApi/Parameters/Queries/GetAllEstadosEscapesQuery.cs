@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires
+namespace Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Queries
 {
     public class GetAllEstadosEscapesQuery : IRequestHandler<GetAllEstadosEscapesRequest, Response<IEnumerable<EnumResponse>>>
     {

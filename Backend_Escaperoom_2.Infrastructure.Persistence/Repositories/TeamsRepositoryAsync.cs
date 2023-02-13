@@ -21,6 +21,39 @@ namespace Backend_Escaperoom_2.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        
+        public async Task<IEnumerable<Team>> GetFullTeam(int id)
+        {
+            return await _dbContext.TeamsDbSet.OrderByDescending(x => x.Id)
+                .Include(x => x.Participantes)
+                .Where(x => x.Id == id).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Team>> GetAllFullTeams()
+        {
+            return await _dbContext.TeamsDbSet.OrderByDescending(x => x.Id)
+                .Include(x => x.Participantes)
+                .AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Team>> GetAllFullTeams(Expression<Func<Team, bool>> predicate)
+        {
+            return await _dbContext.TeamsDbSet.OrderByDescending(x => x.Id)
+                .Include(x => x.Participantes)
+                .Where(predicate).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Team>> GetPagedReponseFullAsync(int pageNumber, int pageSize)
+        {
+            return await _dbContext.TeamsDbSet.OrderByDescending(x => x.Id)
+                .Include(x => x.Participantes)
+                .Skip((pageNumber - 1) * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Team>> GetPagedReponseFullAsync(int pageNumber, int pageSize, Expression<Func<Team, bool>> predicate)
+        {
+            return await _dbContext.TeamsDbSet.Where(predicate).OrderByDescending(x => x.Id)
+                .Include(x => x.Participantes)
+                .Skip((pageNumber - 1) * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
+        }
     }
 }

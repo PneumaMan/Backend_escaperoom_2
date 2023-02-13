@@ -6,12 +6,15 @@ using Backend_Escaperoom_2.Application.DTOs.WebApi.GameControl.AuthenticationPar
 using Backend_Escaperoom_2.Application.DTOs.WebApi.GameControl.Participante;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Participante;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Roles;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.Teams;
+using Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Usuarios;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.Usuarios.CRUD;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Extensions;
 using Backend_Escaperoom_2.Application.Features.Usuarios.Queries;
 using Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries;
+using Backend_Escaperoom_2.Application.Features.WebApi.TipoParticipantes.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Models;
 using Backend_Escaperoom_2.Domain.Entities;
@@ -63,6 +66,12 @@ namespace Backend_Escaperoom_2.Application.Mappings
             CreateMap<CreateEscapeRoomResquest, EscapeRoom>();
             CreateMap<UpdateEscapeRoomResquest, EscapeRoom>();
 
+            //TIPOS PARTICIPANTES
+            CreateMap<TipoParticipante, TipoParticipanteResponse>().ReverseMap();
+            CreateMap<GetAllTiposParticipantesPaginationRequest, GetAllTipoParticipanteParameter>().ReverseMap();
+            CreateMap<CreateTipoParticipanteResquest, TipoParticipante>();
+            CreateMap<UpdateTipoParticipanteResquest, TipoParticipante>();
+
             //PARTICIPANTES
             CreateMap<Participante, ParticipanteResponse>().ReverseMap();
             CreateMap<Participante, EscapeParticipanteResponse>()
@@ -74,6 +83,12 @@ namespace Backend_Escaperoom_2.Application.Mappings
                 .ReverseMap();
             CreateMap<CreateParticipanteResquest, Participante>();
             CreateMap<UpdateParticipanteResquest, Participante>();
+
+            //TIPOS PARTICIPANTES
+            CreateMap<Team, TeamResponse>().ReverseMap();
+            CreateMap<GetAllTeamsPaginationRequest, GetAllTeamParameter>().ReverseMap();
+            CreateMap<CreateTeamResquest, Team>();
+            CreateMap<UpdateTeamResquest, Team>();
 
             /*//RETOS
             CreateMap<Reto, RetoResponse>()

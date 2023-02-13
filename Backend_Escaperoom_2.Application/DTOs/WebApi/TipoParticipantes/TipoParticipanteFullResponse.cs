@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes
 {
-    public class TipoParticipanteResponse
+    public class TipoParticipanteFullResponse
     {
         public int Id { get; set; }
 
@@ -18,5 +18,8 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes
 
         public EscapeRoomResponse EscapeRoom { get; set; }
 
+        public IEnumerable<ParticipanteResponse> Participantes { get; set; }
+
+        //public IEnumerable<Reto> Retos { get; set; }
     }
 }

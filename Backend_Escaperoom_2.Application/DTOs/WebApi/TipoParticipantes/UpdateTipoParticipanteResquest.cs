@@ -1,10 +1,12 @@
-﻿using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
-using Backend_Escaperoom_2.Application.DTOs.WebApi.Participante;
-using System.Collections.Generic;
+﻿using MediatR;
+using Backend_Escaperoom_2.Application.Assets.Attributes;
+using Backend_Escaperoom_2.Application.Wrappers;
+using System.Text.Json.Serialization;
+using System;
 
 namespace Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes
 {
-    public class TipoParticipanteResponse
+    public class UpdateTipoParticipanteResquest : IRequest<Response<int>>
     {
         public int Id { get; set; }
 
@@ -15,8 +17,6 @@ namespace Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes
         public bool Estado { get; set; }
 
         public int EscapeRoomId { get; set; }
-
-        public EscapeRoomResponse EscapeRoom { get; set; }
 
     }
 }

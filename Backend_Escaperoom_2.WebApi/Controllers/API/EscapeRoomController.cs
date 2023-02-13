@@ -3,7 +3,6 @@ using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
-using Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Wrappers;
 using Backend_Escaperoom_2.WebApi.Controllers.API.BaseController;
@@ -18,8 +17,8 @@ using System.Threading.Tasks;
 namespace Backend_Escaperoom_2.WebApi.Controllers.API
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = RolesAuthorize.Desarrollador + "," + RolesAuthorize.Administrador)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,
+        Roles = RolesAuthorize.Administrador)]
     public class EscapeRoomController : BaseApiController
     {
         private readonly ILogger<EscapeRoomController> _logger;
@@ -44,7 +43,7 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         [Produces("application/json", "text/html")]
         [ProducesResponseType(typeof(PagedResponse<IEnumerable<EscapeRoomResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAllPagination([FromQuery] GetAllEscapeRoomParameter filter)
+        public async Task<IActionResult> GetAllPagination([FromQuery] GetAllTiposParticipantesParameter filter)
         {
             _logger.LogInformation("GET ALL EscapeRooms Pagination");
             return Ok(await Mediator.Send(_mapper.Map<GetAllEscapeRoomsPaginationRequest>(filter)));

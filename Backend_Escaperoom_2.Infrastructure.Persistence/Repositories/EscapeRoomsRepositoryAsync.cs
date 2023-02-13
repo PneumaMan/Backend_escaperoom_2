@@ -33,7 +33,7 @@ namespace Backend_Escaperoom_2.Infrastructure.Persistence.Repositories
         {
             return await _dbContext.EscapeRoomsDbSet
                 .Include(x => x.Estaciones).ThenInclude(x => x.Retos).ThenInclude(x => x.Respuestas)
-                //.Include(x => x.Participantes).Include(x => x.Equipos)
+                .Include(x => x.Participantes).Include(x => x.Equipos)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 

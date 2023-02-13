@@ -3,7 +3,7 @@ using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
 using Backend_Escaperoom_2.Application.Extensions;
-using Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Querires;
+using Backend_Escaperoom_2.Application.Features.WebApi.Parameters.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Interfaces.Repositories;
 using Backend_Escaperoom_2.Application.Wrappers;

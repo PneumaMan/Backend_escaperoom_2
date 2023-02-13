@@ -15,7 +15,6 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
 {
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    [Authorize(Roles = RolesAuthorize.Desarrollador)]
     public class RolesController : BaseApiController
     {
         private readonly ILogger<RolesController> _logger;
@@ -37,6 +36,7 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         [Produces("application/json", "text/html")]
         [ProducesResponseType(typeof(Response<IEnumerable<RolesResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [Authorize(Roles = RolesAuthorize.Desarrollador + "," + RolesAuthorize.Administrador)]
         public async Task<IActionResult> GetAll()
         {
             this._logger.LogInformation("GET ALL roles");
