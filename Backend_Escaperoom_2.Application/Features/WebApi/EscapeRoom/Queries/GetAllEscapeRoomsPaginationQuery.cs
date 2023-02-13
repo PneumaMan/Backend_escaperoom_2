@@ -41,7 +41,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries
 
         public async Task<PagedResponse<IEnumerable<EscapeRoomResponse>>> Handle(GetAllEscapeRoomsPaginationRequest request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<GetAllTiposParticipantesParameter>(request);
+            var validFilter = _mapper.Map<GetAllEscapeRoomParameter>(request);
 
             //validad si existe un filtro de busqueda
             await Search(validFilter);
@@ -60,7 +60,7 @@ namespace Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries
         }
 
         /*Metodos*/
-        private async Task Search(GetAllTiposParticipantesParameter validFilter)
+        private async Task Search(GetAllEscapeRoomParameter validFilter)
         {
             if (!string.IsNullOrEmpty(validFilter.NombreEscapeRoom))
             {

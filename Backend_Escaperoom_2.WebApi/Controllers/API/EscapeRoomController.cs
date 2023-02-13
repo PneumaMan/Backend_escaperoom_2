@@ -3,6 +3,7 @@ using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.EscapeRoom;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
+using Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Wrappers;
 using Backend_Escaperoom_2.WebApi.Controllers.API.BaseController;
@@ -43,7 +44,7 @@ namespace Backend_Escaperoom_2.WebApi.Controllers.API
         [Produces("application/json", "text/html")]
         [ProducesResponseType(typeof(PagedResponse<IEnumerable<EscapeRoomResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetAllPagination([FromQuery] GetAllTiposParticipantesParameter filter)
+        public async Task<IActionResult> GetAllPagination([FromQuery] GetAllEscapeRoomParameter filter)
         {
             _logger.LogInformation("GET ALL EscapeRooms Pagination");
             return Ok(await Mediator.Send(_mapper.Map<GetAllEscapeRoomsPaginationRequest>(filter)));

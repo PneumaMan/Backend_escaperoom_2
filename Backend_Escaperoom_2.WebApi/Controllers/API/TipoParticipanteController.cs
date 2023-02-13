@@ -3,7 +3,6 @@ using Backend_Escaperoom_2.Application.DTOs;
 using Backend_Escaperoom_2.Application.DTOs.WebApi.TipoParticipantes;
 using Backend_Escaperoom_2.Application.Enums;
 using Backend_Escaperoom_2.Application.Exceptions;
-using Backend_Escaperoom_2.Application.Features.WebApi.EscapeRoom.Queries;
 using Backend_Escaperoom_2.Application.Features.WebApi.TipoParticipantes.Queries;
 using Backend_Escaperoom_2.Application.Helpers;
 using Backend_Escaperoom_2.Application.Wrappers;
